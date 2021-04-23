@@ -43,7 +43,12 @@ guard :rspec, cmd: 'bundle exec rspec --fail-fast' do
   end
 end
 
-guard :rubocop do
+guard :rubocop, all_on_start: false do
   watch(/%r{.+\.rb$}/)
   watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
+end
+
+guard :reek, all_on_start: false do
+  watch(/%r{.+\.rb$}/)
+  watch('.reek')
 end

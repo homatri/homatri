@@ -1,0 +1,9 @@
+# Directories and files below will not be scanned at all
+exclude_paths:
+  - db/migrate
+
+
+directories:
+  "spec/system/support":
+    DuplicateMethodCall:
+      enabled: false

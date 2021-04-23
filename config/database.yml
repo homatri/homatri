@@ -10,9 +10,12 @@ default: &default
 development:
   <<: *default
   database: homatri_development
-  test:
+
+test:
   <<: *default
   database: homatri_test
+  user: homatri
+  password: homatri
 
 production:
   <<: *default

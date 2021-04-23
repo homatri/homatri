@@ -1,0 +1,87 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
+name: Ruby
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['2.6', '2.7', '3.0']
+
+    steps:
+    - uses: actions/checkout@v2
+
+
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+    - uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: ${{ runner.os }}-gems-
+
+    - uses: Harmon758/postgresql-action@v1.0.0
+      with:
+        postgresql version: latest
+        postgresql db: homatri_test
+        postgresql user: homatri
+        postgresql password: homatri  
+    
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true 
+
+    - name: Audit security vulnerabilities with brakeman
+      run: |
+        bundle exec brakeman
+
+    - name: Audit gem dependencies for strong versions
+      run: |
+        bundle exec strong_versions
+
+    - name: Audit code style with rails best practices
+      run: |
+        bundle exec rails_best_practices
+
+    - name: Audit code smells with reek
+      run: |
+        bundle exec reek
+
+    - name: Check for any missing translations
+      run: |
+        bundle exec i18n-tasks missing
+
+    - name: Run tests
+      env:
+        RAILS_ENV: test
+      run: |
+        bundle exec rails db:create
+        bundle exec rails db:migrate
+        bundle exec rails db:rollback
+        bundle exec rails db:migrate
+        yarn install
+        bundle exec rspec --fail-fast
