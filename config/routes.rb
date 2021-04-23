@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: 'accueil#index'
+  root to: 'public_pages/home#index'
 end
