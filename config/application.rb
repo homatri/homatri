@@ -21,6 +21,7 @@ module Homatri
   # This Application class is responsible for the platform
   class Application < Rails::Application
     config.eager_load_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join('spec/system/pages') if Rails.env.test?
     config.load_defaults 6.1
 
     config.generators do |generator|

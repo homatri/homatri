@@ -3,12 +3,12 @@
 require 'system_helper'
 
 RSpec.describe 'Homepage', type: :system do
-  before { visit root_path }
+  let(:home) { prism.public_pages.load }
 
   describe 'login links' do
     context 'when hospital administrator' do
       it 'has a link to login page' do
-        expect(page).to have_link('Hopitaux')
+        expect(home).to have_link('Hopitaux')
       end
     end
   end
