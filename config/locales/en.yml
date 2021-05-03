@@ -1,1 +1,9 @@
 ---
+en:
+  public_pages:
+    footer:
+      about_us:
+        contact: Contact
+        our_blog: Our blog
+        our_mission: Our mission
+        section_title: Section title
