@@ -54,9 +54,17 @@
   </head>
   <body>
     <nav id="header" class="w-full z-30 top-0 text-white py-1 lg:py-6">
+      <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2">
+        <%= link_to '/en', class: 'lg:mx-0 hover:underline text-gray-800 font-extrabold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75' do %>
+          English
+        <% end %>
+        <%= link_to '/fr', class: 'lg:mx-0 hover:underline text-gray-800 font-extrabold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75' do %>
+          French
+        <% end %>
+      </div>
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-6">
         <div class="pl-4 flex items-center">
-          <%= link_to "J'Existe", '#', class: 'text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl' %>
+          <%= link_to "J'Existe", '#', class: 'text-black no-underline hover:no-underline font-bold text-2xl lg:text-4xl' %>
         </div>
 
         <div class="block lg:hidden pr-4">
@@ -81,7 +89,7 @@
             </li>
           </ul>
           <button id="navAction" class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">
-            Action
+            Contactez nous
           </button>
         </div>
       </div>
@@ -141,22 +149,22 @@
             </ul>
           </div>
           <div class="flex-1">
-            <p class="uppercase font-extrabold text-gray-500 md:mb-6">
-            Company
-            </p>
+            <p class="uppercase font-extrabold text-gray-500 md:mb-6"><%= t('public_pages.footer.about_us.section_title') %></p>
             <ul class="list-reset mb-6">
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a
-                  href="#"
-                  class="font-light no-underline hover:underline text-gray-800 hover:text-orange-500"
-                  >Official Blog</a
-                >
+                <%= link_to '#', class: 'font-light no-underline hover:underline text-gray-800 hover:text-orange-500' do %>
+                  <%= t('public_pages.footer.about_us.our_mission') %>
+                <% end %>
               </li>
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="font-light no-underline hover:underline text-gray-800 hover:text-orange-500" >About Us</a>
+                <%= link_to '#', class: 'font-light no-underline hover:underline text-gray-800 hover:text-orange-500' do %>
+                  <%= t('public_pages.footer.about_us.our_blog') %>
+                <% end %>
               </li>
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="font-light no-underline hover:underline text-gray-800 hover:text-orange-500" >Contact</a>
+                <%= link_to '#', class: 'font-light no-underline hover:underline text-gray-800 hover:text-orange-500' do %>
+                  <%= t('public_pages.footer.about_us.contact') %>
+                <% end %>
               </li>
             </ul>
           </div>

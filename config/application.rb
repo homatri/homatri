@@ -21,8 +21,12 @@ module Homatri
   # This Application class is responsible for the platform
   class Application < Rails::Application
     config.eager_load_paths << Rails.root.join('lib')
-    config.autoload_paths << Rails.root.join('spec/system/pages') if Rails.env.test?
+    if Rails.env.test?
+      config.autoload_paths << Rails.root.join('spec/system/pages')
+    end
     config.load_defaults 6.1
+    config.i18n.default_locale = :fr
+    config.i18n.available_locales = %i[fr en]
 
     config.generators do |generator|
       generator.assets = false
