@@ -55,12 +55,7 @@
   <body>
     <nav id="header" class="w-full z-30 top-0 text-white py-1 lg:py-6">
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2">
-        <%= link_to '/en', class: 'lg:mx-0 hover:underline text-gray-800 font-extrabold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75' do %>
-          English
-        <% end %>
-        <%= link_to '/fr', class: 'lg:mx-0 hover:underline text-gray-800 font-extrabold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75' do %>
-          French
-        <% end %>
+       <%= render(@language_switcher_component)%>
       </div>
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-6">
         <div class="pl-4 flex items-center">
