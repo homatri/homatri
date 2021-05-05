@@ -7,6 +7,10 @@ fr:
         our_blog: Our blog
         our_mission: Our mission
         section_title: Section title
+    home:
+      index:
+        our_main_objective: Nous voulons permettre à toute personne non enregistrée, d’avoir un acte de naissance pour jouir de ses droits et s’acquitter de ses  devoirs à l'âge adulte
+        our_mission: Pour la réduction du taux de personnes non déclarées
     top_menu:
       hopitaux: Hopitaux
       mairies: Mairies
