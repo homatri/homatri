@@ -1,1 +1,17 @@
 ---
+en:
+  public_pages:
+    footer:
+      about_us:
+        contact: Contact
+        our_blog: Our blog
+        our_mission: Our mission
+        section_title: Section title
+    home:
+      index:
+        our_main_objective: We want to allow any unregistered person, to have a birth certificate to enjoy their rights and fulfill their duties in adulthood
+        our_mission: For the reduction of the rate of undeclared persons
+    top_menu:
+      hopitaux: Hospitals
+      mairies: Town Halls
+      tribunaux: Law courts

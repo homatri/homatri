@@ -10,14 +10,17 @@ gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1'
+gem 'rails-i18n', '~> 6.0'
 gem 'redis', '~> 4.0'
 gem 'sass-rails', '~> 6.0'
 gem 'turbolinks', '~> 5.2'
+gem 'view_component', '~> 2.31', require: 'view_component/engine'
 gem 'webpacker', '~> 5.0'
 
 group :test do
-  gem 'capybara', '~> 3.35'
+  gem 'capybara', '~> 3.29'
   gem 'cuprite', ' 0.13'
+  gem 'site_prism', '~> 3.5'
 end
 
 group :development do

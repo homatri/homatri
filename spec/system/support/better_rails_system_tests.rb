@@ -17,6 +17,10 @@ module BetterRailsSystemTests
   end
 end
 
+RSpec.shared_context 'with site_prism' do
+  let(:prism) { ApplicationPrism.new }
+end
+
 RSpec.configure do |config|
   config.include BetterRailsSystemTests, type: :system
 
@@ -28,6 +32,8 @@ RSpec.configure do |config|
     ex.run
     Rails.application.default_url_options[:host] = was_host
   end
+
+  config.include_context 'with site_prism', type: :system
 
   # Make sure this hook runs before others
   config.prepend_before(:each, type: :system) do
