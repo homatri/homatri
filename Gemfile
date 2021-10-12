@@ -8,7 +8,7 @@ gem 'bootsnap', '~> 1.7', require: false
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1'
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.5'
 gem 'rails', '~> 6.1'
 gem 'redis', '~> 4.0'
 gem 'sass-rails', '~> 6.0'
